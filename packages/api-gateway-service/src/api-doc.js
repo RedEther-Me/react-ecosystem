@@ -2,7 +2,7 @@
 
 const apiDoc = {
   swagger: "2.0",
-  basePath: "/v1",
+  basePath: "/",
   info: {
     title: "A getting started API.",
     version: "1.0.0"
@@ -22,4 +22,4 @@ const apiDoc = {
   paths: {}
 };
 
-export default apiDoc;
+module.exports = apiDoc;

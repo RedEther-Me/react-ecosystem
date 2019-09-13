@@ -1,8 +1,9 @@
 // ./app.js
-import express from "express";
-import expressOpenApi from "express-openapi";
-import v1WorldsService from "./services/worldsService.js";
-import v1ApiDoc from "./api-doc.js";
+const path = require("path");
+const express = require("express");
+const expressOpenApi = require("express-openapi");
+const v1WorldsService = require("./services/worldsService");
+const v1ApiDoc = require("./api-doc");
 
 const { initialize } = expressOpenApi;
 
@@ -15,7 +16,7 @@ initialize({
   dependencies: {
     worldsService: v1WorldsService
   },
-  paths: "./controllers/"
+  paths: path.resolve(__dirname, "controllers")
 });
 
 app.listen(3000);

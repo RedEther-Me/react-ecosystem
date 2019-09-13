@@ -12,4 +12,4 @@ const worldsService = {
   }
 };
 
-export default worldsService;
+module.exports = worldsService;

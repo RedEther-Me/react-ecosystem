@@ -1,26 +1,29 @@
 {
-  "name": "api-gateway-service",
+  "name": "server-utils",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Andrew Johnson <lordxuqra@gmail.com>",
   "homepage": "https://github.com/RedEther-Me/react-ecosystem#readme",
   "license": "MIT",
+  "main": "lib/server-utils.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RedEther-Me/react-ecosystem.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1",
-    "start": "cross-env NODE_ENV=develop nodemon -w src --exec \"yarn dev\"",
-    "dev": "node src/api.js"
+    "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/RedEther-Me/react-ecosystem/issues"
-  },
-  "dependencies": {
-    "cross-env": "^5.2.1",
-    "express": "^4.17.1",
-    "express-openapi": "^4.6.5",
-    "nodemon": "^1.19.2"
   }
 }

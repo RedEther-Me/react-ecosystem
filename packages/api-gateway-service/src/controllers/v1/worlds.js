@@ -1,5 +1,5 @@
 // ./api-v1/paths/worlds.js
-export default function(worldsService) {
+module.exports = function(worldsService) {
   let operations = {
     GET
   };
@@ -40,4 +40,4 @@ export default function(worldsService) {
   };
 
   return operations;
-}
+};
