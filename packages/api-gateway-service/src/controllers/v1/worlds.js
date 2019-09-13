@@ -1,11 +1,11 @@
 // ./api-v1/paths/worlds.js
-module.exports = function(worldsService) {
+module.exports = function(registrationService) {
   let operations = {
     GET
   };
 
   function GET(req, res, next) {
-    res.status(200).json(worldsService.getWorlds(req.query.worldName));
+    res.status(200).json(registrationService.getWorlds(req.query.worldName));
   }
 
   // NOTE: We could also use a YAML string here.
