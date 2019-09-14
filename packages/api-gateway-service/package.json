@@ -18,12 +18,12 @@
     "url": "https://github.com/RedEther-Me/react-ecosystem/issues"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "config": "^3.2.2",
     "cross-env": "^5.2.1",
     "express": "^4.17.1",
     "express-openapi": "^4.6.5",
-    "node-fetch": "^2.6.0",
     "nodemon": "^1.19.2"
   }
 }

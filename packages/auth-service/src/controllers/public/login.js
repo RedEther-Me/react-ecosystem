@@ -4,6 +4,8 @@ module.exports = function() {
     const { body } = req;
     const { username, password } = body;
 
+    console.log(username, password);
+
     res.status(200).json({ valid: true });
   }
 

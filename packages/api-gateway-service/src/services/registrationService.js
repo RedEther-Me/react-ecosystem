@@ -4,7 +4,7 @@ const services = {};
 
 const registrationService = {
   getAvailableService(name) {
-    return services[name] ? [worlds[name]] : undefined;
+    return services[name] ? services[name] : undefined;
   },
   addAvailableService(name, baseUrl) {
     services[name] = { baseUrl };

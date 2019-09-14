@@ -34,7 +34,6 @@ const register = async () => {
     const { status } = result;
     if (status !== 200) {
       console.log("Unable to connect to api-gateway, exiting...");
-      console.log(result);
       // console.log(result.json());
 
       listener.close(function() {
@@ -52,7 +51,7 @@ const register = async () => {
       return;
     }
 
-    setInterval(register, 30 * 1000);
+    setTimeout(register, 30 * 1000);
   } catch (err) {
     console.log(err);
     listener.close();

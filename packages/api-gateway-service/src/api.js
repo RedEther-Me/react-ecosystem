@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const expressOpenApi = require("express-openapi");
 const bodyParser = require("body-parser");
+const axios = require("axios").default;
 
 const { port } = require("config");
 
@@ -30,19 +31,27 @@ initialize({
   paths: path.resolve(__dirname, "controllers")
 });
 
-app.all("/api/:serviceName/*", (req, res) => {
-  const { params, query } = req;
+app.all("/api/:serviceName/*", async (req, res) => {
+  const { params, query, method } = req;
   const { serviceName, "0": path } = params;
   const service = registrationService.getAvailableService(serviceName);
 
-  console.log("api hit", serviceName, service, path, query);
+  // console.log("api hit", serviceName, service, path, query, method);
 
   if (!service) {
     res.status(404).send();
     return;
   }
 
-  res.send(`${service.baseUrl}/${path}`);
+  const api = axios[method.toLowerCase()];
+
+  try {
+    const { status, body } = await api(`${service.baseUrl}${path}`);
+    res.status(status).send(body);
+  } catch (err) {
+    const { status, body } = err.response;
+    res.status(status).send(body);
+  }
 });
 
 app.listen(port);
