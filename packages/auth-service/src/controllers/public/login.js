@@ -1,15 +1,14 @@
 // ./api-v1/paths/worlds.js
-module.exports = function(registrationService) {
-  let operations = {
-    GET
-  };
+module.exports = function() {
+  function POST(req, res, next) {
+    const { body } = req;
+    const { username, password } = body;
 
-  function GET(req, res, next) {
-    res.status(200).json(registrationService.getWorlds(req.query.worldName));
+    res.status(200).json({ valid: true });
   }
 
   // NOTE: We could also use a YAML string here.
-  GET.apiDoc = {
+  POST.apiDoc = {
     summary: "Returns worlds by name.",
     operationId: "getWorlds",
     parameters: [
@@ -39,5 +38,7 @@ module.exports = function(registrationService) {
     }
   };
 
-  return operations;
+  return {
+    POST
+  };
 };

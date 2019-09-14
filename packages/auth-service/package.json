@@ -17,6 +17,16 @@
     "registry": "https://registry.yarnpkg.com"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "start": "cross-env NODE_ENV=develop nodemon -w src --exec \"yarn dev\"",
+    "dev": "node src/api.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "config": "^3.2.2",
+    "cross-env": "^5.2.1",
+    "express": "^4.17.1",
+    "express-openapi": "^4.6.5",
+    "nodemon": "^1.19.2"
   }
 }

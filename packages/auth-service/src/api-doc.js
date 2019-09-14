@@ -8,20 +8,6 @@ const apiDoc = {
     version: "1.0.0"
   },
   definitions: {
-    Registration: {
-      type: "object",
-      properties: {
-        name: {
-          description: "The name of the service registering",
-          type: "string"
-        },
-        baseUrl: {
-          description: "The base url of the service registering",
-          type: "string"
-        }
-      },
-      required: ["name", "baseUrl"]
-    },
     World: {
       type: "object",
       properties: {
