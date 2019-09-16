@@ -1,3 +1,8 @@
 import React from "react";
+import FormsView from "./components/forms";
 
-export default () => <div />;
+export default () => (
+  <main className="container">
+    <FormsView />
+  </main>
+);

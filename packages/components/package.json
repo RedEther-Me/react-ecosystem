@@ -7,9 +7,11 @@
   "styel": "dist/main.scss",
   "dependencies": {
     "auth": "^0.0.9",
+    "formik": "^1.5.8",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,6 +38,7 @@
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
     "@babel/runtime": "^7.6.0",
-    "cross-env": "^5.2.1"
+    "cross-env": "^5.2.1",
+    "react-live": "^2.2.0"
   }
 }
