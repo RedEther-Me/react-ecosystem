@@ -26,7 +26,7 @@ export default () => (
       </Col>
     </Row>
     <Row>
-      <LiveProvider {...{ code, scope: { ...scope, Formik, Yup } }}>
+      <LiveProvider {...{ code, scope: { ...scope, Formik, Yup, Fragment } }}>
         <Col>
           <Card>
             <CardBody>

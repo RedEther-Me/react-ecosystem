@@ -10,14 +10,15 @@ const InputFieldWrapper = ({
   value,
   helpText,
   errors,
+  touched,
   type = "text",
   className,
   onChange,
   onBlur
 }) => {
-  const hasErrors = errors && errors.length > 0;
+  const hasErrors = touched && errors && errors.length > 0;
   return (
-    <FieldWrapper {...{ id, label, helpText, errors }}>
+    <FieldWrapper {...{ id, label, helpText, errors, touched }}>
       <InputFieldComponent
         {...{
           id,

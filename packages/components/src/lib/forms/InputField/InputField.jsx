@@ -7,7 +7,7 @@ const InputField = ({ name, label, type, helpText }) => (
     name={name}
     render={({ field, form }) => {
       const { value, onBlur, onChange } = field;
-      const errors = form.errors[name];
+      const { errors, touched, submitCount } = form;
 
       return (
         <InputFieldWrapper
@@ -17,7 +17,8 @@ const InputField = ({ name, label, type, helpText }) => (
             label,
             helpText,
             type,
-            errors,
+            errors: errors[name],
+            touched: touched[name] || submitCount > 0,
             value,
             onChange,
             onBlur
