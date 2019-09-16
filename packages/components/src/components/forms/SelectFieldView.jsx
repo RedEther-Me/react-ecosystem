@@ -14,10 +14,16 @@ const code = `
     firstField: Yup.string().required(),
   })}
   render={() => (
-    <InputField
+    <SelectField
       name="firstField"
       label="First Field"
       helpText="You can test the validation by leaving the field blank"
+      options={[
+        { label: 'option1', value: 1 },
+        { label: 'option2', value: 2 },
+        { label: 'option3', value: 3 },
+        { label: 'option4', value: 4 },
+      ]}
       />
   )} />
 `;
@@ -26,7 +32,7 @@ export default () => (
   <Fragment>
     <Row>
       <Col>
-        <h2>Input Field</h2>
+        <h2>Select Field</h2>
       </Col>
     </Row>
     <Row>
