@@ -21,7 +21,7 @@ const code = `
         <NavDropdownItem label="Third Option" to="#" />
       </NavDropdown>
     </NavbarGroup>
-    <NavbarGroup tag="div" isRight>
+    <NavbarGroup tagName="div" isRight>
       <NavItem>Option</NavItem>
     </NavbarGroup>
   </NavbarContent>
@@ -40,7 +40,7 @@ export default () => (
         {...{ code, scope: { ...scope, Formik, Form, Yup, Fragment } }}
       >
         <Col>
-          <Row className="mb-3">
+          <Row hasBottomMargin>
             <Col>
               <Card>
                 <CardBody>

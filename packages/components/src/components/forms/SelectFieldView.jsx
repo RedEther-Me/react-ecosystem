@@ -43,7 +43,7 @@ export default () => (
         <h2>Select Field</h2>
       </Col>
     </Row>
-    <Row>
+    <Row hasBottomMargin>
       <LiveProvider
         {...{ code, scope: { ...scope, Formik, Form, Yup, Fragment } }}
       >
