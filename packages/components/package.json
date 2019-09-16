@@ -4,10 +4,9 @@
   "private": true,
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "styel": "dist/main.scss",
+  "style": "dist/main.scss",
   "dependencies": {
     "auth": "^0.0.9",
-    "formik": "^1.5.8",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
@@ -17,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build-app": "react-scripts build",
-    "build": "rm -rf dist && cross-env NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
+    "build": "cross-env NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
     "test": "react-scripts test"
   },
   "eslintConfig": {
@@ -40,6 +39,7 @@
     "@babel/core": "^7.6.0",
     "@babel/runtime": "^7.6.0",
     "cross-env": "^5.2.1",
+    "formik": "^1.5.8",
     "react-live": "^2.2.0"
   }
 }

@@ -17,8 +17,8 @@ const InputField = ({ name, label, type, helpText }) => (
             label,
             helpText,
             type,
-            errors: errors[name],
-            touched: touched[name] || submitCount > 0,
+            errors: errors && errors[name],
+            touched: (touched && touched[name]) || submitCount > 0,
             value,
             onChange,
             onBlur
