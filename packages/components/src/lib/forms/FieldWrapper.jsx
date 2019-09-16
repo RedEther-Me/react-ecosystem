@@ -1,8 +1,8 @@
 import React from "react";
 
-export default ({ id, label, helpText, errors, children }) => (
+export default ({ id, label, helpText, errors, children, noLabel }) => (
   <div className="form-group">
-    <label htmlFor={id}>{label}</label>
+    {!noLabel && <label htmlFor={id}>{label}</label>}
     {children}
     {helpText && (
       <small id={`${id}-help`} className="form-text">
