@@ -1,17 +1,19 @@
 import React from "react";
 import { Field } from "formik";
 
-import RadioGroupFieldWrapper from "./RadioGroupFieldWrapper";
+import CheckboxGroupFieldWrapper from "./CheckboxGroupFieldWrapper";
 
-const RadioGroupField = ({ name, label, helpText, options }) => (
+const CheckboxGroupField = ({ name, label, helpText, options }) => (
   <Field
     name={name}
     render={({ field, form }) => {
       const { value, onBlur, onChange } = field;
       const { errors, touched, submitCount } = form;
 
+      console.log(field, form);
+
       return (
-        <RadioGroupFieldWrapper
+        <CheckboxGroupFieldWrapper
           {...{
             id: name,
             name,
@@ -30,4 +32,4 @@ const RadioGroupField = ({ name, label, helpText, options }) => (
   />
 );
 
-export default RadioGroupField;
+export default CheckboxGroupField;

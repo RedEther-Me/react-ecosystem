@@ -13,13 +13,13 @@ const code = `
 // import * as Yup from "yup";
 
 <Formik
-  initialValues={{ firstField: ''}}
+  initialValues={{ firstField: [] }}
   validationSchema={Yup.object().shape({
-    firstField: Yup.string().required(),
+    firstField: Yup.array().required(),
   })}
   render={() => (
     <Form>
-      <RadioGroupField
+      <CheckboxGroupField
         name="firstField"
         label="First Field"
         helpText="You can test the validation by leaving the field blank"
@@ -39,7 +39,7 @@ export default () => (
   <Fragment>
     <Row>
       <Col>
-        <h2>Radio Group Field</h2>
+        <h2>Checkbox Group Field</h2>
       </Col>
     </Row>
     <Row>

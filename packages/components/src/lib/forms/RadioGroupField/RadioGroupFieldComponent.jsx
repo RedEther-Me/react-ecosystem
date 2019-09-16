@@ -3,10 +3,7 @@ import React, { Fragment } from "react";
 const RadioGroupFieldComponent = ({
   id,
   name,
-  value,
-  hasHelpText,
-  hasErrors,
-  className,
+  value: fieldValue,
   onChange,
   onBlur,
   options = []
@@ -15,8 +12,12 @@ const RadioGroupFieldComponent = ({
     {options.map(({ label, value }) => (
       <label key={value} className="radiocheck">
         {label}
-        <input type="radio" {...{ id, name, value, onChange, onBlur }} />
-        <span className="checkmark"></span>
+        <input
+          type="radio"
+          {...{ id, name, value, onChange, onBlur }}
+          checked={fieldValue === `${value}`}
+        />
+        <span className="radiomark"></span>
       </label>
     ))}
   </Fragment>
