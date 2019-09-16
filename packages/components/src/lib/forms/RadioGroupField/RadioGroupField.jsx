@@ -10,6 +10,8 @@ const RadioGroupField = ({ name, label, helpText, options }) => (
       const { value, onBlur, onChange } = field;
       const { errors, touched, submitCount } = form;
 
+      console.log(field, form);
+
       return (
         <RadioGroupFieldWrapper
           {...{

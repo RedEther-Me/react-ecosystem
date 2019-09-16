@@ -1,6 +1,6 @@
 import React from "react";
 
-import FieldWrapper from "../FieldWrapper";
+import FieldsetWrapper from "../FieldsetWrapper";
 import RadioGroupFieldComponent from "./RadioGroupFieldComponent";
 
 const RadioGroupFieldWrapper = ({
@@ -18,7 +18,7 @@ const RadioGroupFieldWrapper = ({
 }) => {
   const hasErrors = touched && errors && errors.length > 0;
   return (
-    <FieldWrapper {...{ id, label, helpText, errors, touched }}>
+    <FieldsetWrapper {...{ id, label, helpText, errors, touched }}>
       <RadioGroupFieldComponent
         {...{
           id,
@@ -32,7 +32,7 @@ const RadioGroupFieldWrapper = ({
           onBlur
         }}
       />
-    </FieldWrapper>
+    </FieldsetWrapper>
   );
 };
 

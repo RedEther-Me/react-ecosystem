@@ -13,9 +13,9 @@ const RadioGroupFieldComponent = ({
 }) => (
   <Fragment>
     {options.map(({ label, value }) => (
-      <label className="radiocheck">
+      <label key={value} className="radiocheck">
         {label}
-        <input type="radio" name={name} />
+        <input type="radio" {...{ id, name, value, onChange, onBlur }} />
         <span className="checkmark"></span>
       </label>
     ))}
