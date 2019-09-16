@@ -17,6 +17,7 @@ const code = `
   validationSchema={Yup.object().shape({
     firstField: Yup.string().required(),
   })}
+  onSubmit={() => {}}
   render={() => (
     <Form>
       <RadioGroupField

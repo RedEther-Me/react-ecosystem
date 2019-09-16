@@ -17,6 +17,7 @@ const code = `
   validationSchema={Yup.object().shape({
     firstField: Yup.array().required(),
   })}
+  onSubmit={() => {}}
   render={() => (
     <Form>
       <CheckboxGroupField

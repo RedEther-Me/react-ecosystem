@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-import { Formik } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import * as scope from "../../lib";
@@ -13,12 +13,16 @@ const code = `
   validationSchema={Yup.object().shape({
     firstField: Yup.string().required(),
   })}
+  onSubmit={() => {}}
   render={() => (
-    <InputField
-      name="firstField"
-      label="First Field"
-      helpText="You can test the validation by leaving the field blank"
-      />
+    <Form>
+      <InputField
+        name="firstField"
+        label="First Field"
+        helpText="You can test the validation by leaving the field blank"
+        />
+      <Button className="btn-primary">Submit</Button>
+    </Form>
   )} />
 `;
 
@@ -30,7 +34,9 @@ export default () => (
       </Col>
     </Row>
     <Row>
-      <LiveProvider {...{ code, scope: { ...scope, Formik, Yup, Fragment } }}>
+      <LiveProvider
+        {...{ code, scope: { ...scope, Formik, Form, Yup, Fragment } }}
+      >
         <Col>
           <Card>
             <CardBody>
