@@ -8,6 +8,10 @@ import * as scope from "../../lib";
 const { Row, Col, Card, CardBody } = scope;
 
 const code = `
+// import React, { Fragment } from "react";
+// import { Formik, Form } from "formik";
+// import * as Yup from "yup";
+
 <Formik
   initialValues={{ firstField: ''}}
   validationSchema={Yup.object().shape({

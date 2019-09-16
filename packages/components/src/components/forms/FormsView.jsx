@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Row, Col } from "../../lib";
+import { Container, Row, Col } from "../../lib";
 
 import CheckboxFieldView from "./CheckboxFieldView";
 import CheckboxGroupFieldView from "./CheckboxGroupFieldView";
@@ -9,13 +9,15 @@ import RadioFieldView from "./RadioFieldView";
 import SelectFieldView from "./SelectFieldView";
 
 export default () => (
-  <Row>
-    <Col>
-      <CheckboxFieldView />
-      <CheckboxGroupFieldView />
-      <InputFieldView />
-      <RadioFieldView />
-      <SelectFieldView />
-    </Col>
-  </Row>
+  <Container>
+    <Row>
+      <Col>
+        <CheckboxFieldView />
+        <CheckboxGroupFieldView />
+        <InputFieldView />
+        <RadioFieldView />
+        <SelectFieldView />
+      </Col>
+    </Row>
+  </Container>
 );
