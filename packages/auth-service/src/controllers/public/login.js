@@ -1,12 +1,37 @@
-// ./api-v1/paths/worlds.js
+const axios = require("axios").default;
+const jwt = require("jsonwebtoken");
+
+const { apiGateway } = require("config");
+
 module.exports = function() {
-  function POST(req, res, next) {
-    const { body } = req;
-    const { username, password } = body;
+  async function POST(req, res, next) {
+    try {
+      const { body } = req;
+      const { username, password } = body;
 
-    console.log(username, password);
+      // TODO: Validate password
 
-    res.status(200).json({ valid: true });
+      const { data } = await axios.post(`${apiGateway}/credentials`, {
+        consumerId: username,
+        type: "jwt"
+      });
+      const { keyId, keySecret } = data;
+      console.log(data);
+
+      const payload = {
+        sub: keyId
+      };
+      const options = {
+        issuer: "react-ecosystem",
+        audience: "react-ecosystem"
+      };
+
+      const token = jwt.sign(payload, "localhost", options);
+
+      res.status(200).json({ token });
+    } catch (err) {
+      res.status(500).json({ err });
+    }
   }
 
   // NOTE: We could also use a YAML string here.

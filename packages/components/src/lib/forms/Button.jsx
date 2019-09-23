@@ -1,8 +1,8 @@
 import React from "react";
 import classnames from "classnames";
 
-export default props => (
-  <button className={classnames(props.className, "btn")}>
-    {props.children}
+export default ({ className, type, onClick, children }) => (
+  <button {...{ type, onClick }} className={classnames(className, "btn")}>
+    {children}
   </button>
 );

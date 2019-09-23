@@ -29,17 +29,19 @@ module.exports = {
       apiEndpoints: [serviceName],
       policies: [
         {
-          jwt: {
+          cors: {
             action: {
-              secretOrPublicKey: "localhost"
+              origin: "http://localhost:3000",
+              methods: "HEAD,GET,PUT,PATCH,POST,DELETE",
+              credentials: true
             }
           }
         },
         {
-          cors: {
+          jwt: {
             action: {
-              origin: "http://localhost:3000",
-              methods: "OPTIONS,HEAD,PUT,PATCH,POST,DELETE"
+              secretOrPublicKey: "localhost",
+              checkCredentialExistence: "false"
             }
           }
         },
@@ -66,7 +68,7 @@ module.exports = {
           cors: {
             action: {
               origin: "http://localhost:3000",
-              methods: "OPTIONS,HEAD,PUT,PATCH,POST,DELETE"
+              methods: "HEAD,GET,PUT,PATCH,POST,DELETE"
             }
           }
         },
