@@ -4,6 +4,9 @@
   "private": true,
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "bootstrap": "yarn lerna bootstrap"
+  },
   "workspaces": {
     "packages": [
       "packages/*"
