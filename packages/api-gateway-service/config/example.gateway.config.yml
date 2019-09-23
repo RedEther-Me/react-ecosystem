@@ -1,0 +1,34 @@
+http:
+  port: 8080
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  auth:
+    host: localhost
+    paths: /auth/*
+serviceEndpoints:
+  authService:
+    url: "http://localhost:5000"
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+  - jwt
+pipelines:
+  authService:
+    apiEndpoints:
+      - auth
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: authService
+              changeOrigin: true
+              prependPath: true
+              ignorePath: false
+              stripPath: true

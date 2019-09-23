@@ -2,9 +2,10 @@
 const path = require("path");
 const express = require("express");
 const expressOpenApi = require("express-openapi");
-const axios = require("axios").default;
 
 const { port, apiGateway, serviceName } = require("config");
+
+const { registerService } = require("@ether/server-utils");
 
 const v1ApiDoc = require("./api-doc");
 
@@ -21,6 +22,9 @@ initialize({
   paths: path.resolve(__dirname, "controllers")
 });
 
-const listener = app.listen(port, () =>
-  console.log(`Service started on port ${port}`)
-);
+app.listen(port, () => {
+  console.log(`Service started on port ${port}`);
+
+  console.log(`registering ${serviceName} on ${apiGateway}`);
+  registerService({ apiGateway, serviceName, port });
+});

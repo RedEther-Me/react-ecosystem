@@ -2,9 +2,10 @@
 const path = require("path");
 const express = require("express");
 const expressOpenApi = require("express-openapi");
-const axios = require("axios").default;
 
 const { port, apiGateway, serviceName } = require("config");
+
+const { registerService } = require("@ether/server-utils");
 
 const v1ApiDoc = require("./api-doc");
 
@@ -21,43 +22,9 @@ initialize({
   paths: path.resolve(__dirname, "controllers")
 });
 
-const listener = app.listen(port, () =>
-  console.log(`Service started on port ${port}`)
-);
+app.listen(port, () => {
+  console.log(`Service started on port ${port}`);
 
-// const register = async () => {
-//   try {
-//     console.log(`registering ${serviceName} on ${apiGateway}`);
-//     const result = await axios.post(`${apiGateway}/v1/register`, {
-//       name: serviceName,
-//       baseUrl: `http://localhost:${port}/`
-//     });
-
-//     const { status } = result;
-//     if (status !== 200) {
-//       console.log("Unable to connect to api-gateway, exiting...");
-//       // console.log(result.json());
-
-//       listener.close(function() {
-//         console.log("Closed out remaining connections.");
-//         // Close db connections, etc.
-//       });
-
-//       setTimeout(function() {
-//         console.error(
-//           "Could not close connections in time, forcefully shutting down"
-//         );
-//         process.exit(1);
-//       }, 30 * 1000);
-
-//       return;
-//     }
-
-//     setTimeout(register, 30 * 1000);
-//   } catch (err) {
-//     console.log(err);
-//     listener.close();
-//   }
-// };
-
-// register();
+  console.log(`registering ${serviceName} on ${apiGateway}`);
+  registerService({ apiGateway, serviceName, port });
+});
