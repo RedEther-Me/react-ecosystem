@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Button } from "@ether/components";
+import Login from "./components/auth/Login";
 
 function App() {
   return (
     <div className="App">
-      <Button>test</Button>
+      <Login />
     </div>
   );
 }

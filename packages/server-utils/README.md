@@ -1,11 +1,11 @@
-# `auth`
+# `server-utils`
 
 > TODO: description
 
 ## Usage
 
 ```
-const auth = require('auth');
+const serverUtils = require('server-utils');
 
 // TODO: DEMONSTRATE API
 ```
