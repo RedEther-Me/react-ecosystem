@@ -1,5 +1,5 @@
 module.exports = {
   port: 8000,
-  schema: "exampe",
-  serviceName: "exampe"
+  schema: "example",
+  serviceName: "example"
 };

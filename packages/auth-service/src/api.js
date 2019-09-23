@@ -2,6 +2,7 @@
 const path = require("path");
 const express = require("express");
 const expressOpenApi = require("express-openapi");
+const bodyParser = require("body-parser");
 
 const { port, apiGateway, serviceName } = require("config");
 
@@ -12,6 +13,7 @@ const v1ApiDoc = require("./api-doc");
 const { initialize } = expressOpenApi;
 
 const app = express();
+app.use(bodyParser.json());
 
 initialize({
   app,

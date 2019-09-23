@@ -1,10 +1,5 @@
 // ./api-v1/paths/worlds.js
 module.exports = function() {
-  function GET(req, res, next) {
-    console.log("----------- yay -----------------");
-    res.status(200).json({ valid: true });
-  }
-
   function POST(req, res, next) {
     const { body } = req;
     const { username, password } = body;
@@ -16,14 +11,15 @@ module.exports = function() {
 
   // NOTE: We could also use a YAML string here.
   POST.apiDoc = {
-    summary: "Returns worlds by name.",
-    operationId: "getWorlds",
+    summary: "Log the user in",
     parameters: [
       {
-        in: "query",
-        name: "worldName",
+        in: "body",
+        name: "body",
         required: true,
-        type: "string"
+        schema: {
+          $ref: "#/definitions/Login"
+        }
       }
     ],
     responses: {
@@ -46,7 +42,6 @@ module.exports = function() {
   };
 
   return {
-    GET,
     POST
   };
 };

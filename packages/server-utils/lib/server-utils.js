@@ -36,6 +36,14 @@ module.exports = {
           }
         },
         {
+          cors: {
+            action: {
+              origin: "http://localhost:3000",
+              methods: "OPTIONS,HEAD,PUT,PATCH,POST,DELETE"
+            }
+          }
+        },
+        {
           proxy: [
             {
               action: {
@@ -54,6 +62,14 @@ module.exports = {
     await axios.put(`${apiGateway}/pipelines/${serviceName}PublicService`, {
       apiEndpoints: [`${serviceName}Public`],
       policies: [
+        {
+          cors: {
+            action: {
+              origin: "http://localhost:3000",
+              methods: "OPTIONS,HEAD,PUT,PATCH,POST,DELETE"
+            }
+          }
+        },
         {
           proxy: [
             {

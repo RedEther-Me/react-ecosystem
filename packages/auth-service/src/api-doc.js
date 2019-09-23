@@ -8,15 +8,19 @@ const apiDoc = {
     version: "1.0.0"
   },
   definitions: {
-    World: {
+    Login: {
       type: "object",
       properties: {
-        name: {
-          description: "The name of this world.",
+        username: {
+          description: "The username to authenticate",
+          type: "string"
+        },
+        password: {
+          description: "The password used to authenticate the username",
           type: "string"
         }
       },
-      required: ["name"]
+      required: ["username", "password"]
     }
   },
   paths: {}

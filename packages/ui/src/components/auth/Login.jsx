@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
@@ -16,9 +16,10 @@ function Login() {
             username: Yup.string().required(),
             password: Yup.string().required()
           })}
-          onSubmit={() => {}}
-          render={props => {
-            console.log(props);
+          onSubmit={({ username, password }) => {
+            login(username, password);
+          }}
+          render={() => {
             return (
               <Form>
                 <InputField name="username" label="Username" />

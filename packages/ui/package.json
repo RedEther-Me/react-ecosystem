@@ -14,7 +14,7 @@
     "yup": "^0.27.0"
   },
   "scripts": {
-    "start": "yarn exec react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test"
   },
