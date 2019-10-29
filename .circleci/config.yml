@@ -13,6 +13,12 @@ parameters:
   auth-service:
     type: boolean
     default: false
+  server-utils:
+    type: boolean
+    default: false
+  components:
+    type: boolean
+    default: false
   ui:
     type: boolean
     default: false
@@ -20,7 +26,7 @@ parameters:
 executors:
   node:
     docker:
-      - image: circleci/node
+      - image: circleci/node:7.10
 
 jobs:
   trigger-workflows:
@@ -106,6 +112,30 @@ workflows:
           package_name: auth-service
           requires:
             - auth-service-build
+
+  server-utils:
+    when: << pipeline.parameters.server-utils >>
+    jobs:
+      - build:
+          name: server-utils-build
+          package_name: server-utils
+      - deploy:
+          name: server-utils-deploy
+          package_name: server-utils
+          requires:
+            - server-utils-build
+
+  components:
+    when: << pipeline.parameters.components >>
+    jobs:
+      - build:
+          name: components-build
+          package_name: components
+      - deploy:
+          name: components-deploy
+          package_name: components
+          requires:
+            - components-build
 
   ui:
     when: << pipeline.parameters.ui >>
