@@ -55,3 +55,25 @@ jobs:
           root: ~/project
           paths:
             - packages/<< parameters.package_name >>
+
+workflows:
+  version: 2
+
+  # The main workflow responsible for triggering all other workflows
+  # in which changes are detected.
+  ci:
+    when: << pipeline.parameters.trigger >>
+    jobs:
+      - trigger-workflows
+
+  api-gateway-service:
+    when: << pipeline.parameters.api-gateway-service >>
+    jobs:
+      - build:
+          name: api-gateway-service-build
+          package_name: api-gateway-service
+      - deploy:
+          name: api-gateway-service-deploy
+          package_name: api-gateway-service
+          requires:
+            - api-gateway-service-build
