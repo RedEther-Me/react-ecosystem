@@ -1,11 +1,17 @@
 import React from "react";
 
+import GlobalNavigation from "./components/navigation/GlobalNavigation";
 import Login from "./components/auth/Login";
 
 function App() {
   return (
-    <div className="App">
-      <Login />
+    <div>
+      <header>
+        <GlobalNavigation />
+      </header>
+      <main className="App">
+        <Login />
+      </main>
     </div>
   );
 }

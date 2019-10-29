@@ -5,12 +5,11 @@ import * as Yup from "yup";
 import { Row, Col, Button, InputField } from "@ether/components";
 
 import { login } from "../../utils/api/auth";
-import { protectedApi } from "../../utils/api/example";
 
 function Login() {
   return (
     <Row>
-      <Col className="col-2 offset-5">
+      <Col className="col-lg-2 col-md-4 col-8 offset-lg-5 offset-md-4 offset-2">
         <Formik
           initialValues={{ username: "", password: "" }}
           validationSchema={Yup.object().shape({
@@ -23,18 +22,24 @@ function Login() {
           render={() => {
             return (
               <Form>
-                <InputField name="username" label="Username" />
-                <InputField name="password" label="Password" />
-                <Button className="btn-primary">Submit</Button>
-                <Button
-                  type="button"
-                  onClick={() => {
-                    protectedApi();
-                  }}
-                  className="btn-primary"
-                >
-                  Test
-                </Button>
+                <Row>
+                  <Col>
+                    <InputField name="username" label="Username" />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <InputField name="password" label="Password" />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Button className="btn-primary">Log In</Button>
+                    <Button type="button" className="btn-link">
+                      Register
+                    </Button>
+                  </Col>
+                </Row>
               </Form>
             );
           }}

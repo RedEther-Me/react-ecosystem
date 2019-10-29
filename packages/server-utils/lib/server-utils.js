@@ -41,7 +41,7 @@ module.exports = {
           jwt: {
             action: {
               secretOrPublicKey: "localhost",
-              checkCredentialExistence: "false"
+              checkCredentialExistence: "true"
             }
           }
         },
