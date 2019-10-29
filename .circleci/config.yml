@@ -27,7 +27,7 @@ jobs:
     executor: node
     steps:
       - checkout
-      - run: chmod + x ./circle_trigger.sh && ./circle_trigger.sh
+      - run: chmod +x ./circle_trigger.sh && ./circle_trigger.sh
 
   build:
     parameters:
