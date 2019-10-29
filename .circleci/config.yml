@@ -1,27 +1,26 @@
-version: 2.0
+version: 2.1
 
 parameters:
   # This parameter is used to trigger the main workflow
-  trigger:
-    type: boolean
-    default: true
-
+  # trigger:
+  #   type: boolean
+  #   default: true
   # A parameter per package
-  api-gateway-service:
-    type: boolean
-    default: false
-  auth-service:
-    type: boolean
-    default: false
-  server-utils:
-    type: boolean
-    default: false
-  components:
-    type: boolean
-    default: false
-  ui:
-    type: boolean
-    default: false
+  # api-gateway-service:
+  #   type: boolean
+  #   default: false
+  # auth-service:
+  #   type: boolean
+  #   default: false
+  # server-utils:
+  #   type: boolean
+  #   default: false
+  # components:
+  #   type: boolean
+  #   default: false
+  # ui:
+  #   type: boolean
+  #   default: false
 
 executors:
   node:
@@ -29,11 +28,11 @@ executors:
       - image: circleci/node:7.10
 
 jobs:
-  trigger-workflows:
-    executor: node
-    steps:
-      - checkout
-      - run: chmod +x ./circle_trigger.sh && ./circle_trigger.sh
+  # trigger-workflows:
+  #   executor: node
+  #   steps:
+  #     - checkout
+  #     - run: chmod +x ./circle_trigger.sh && ./circle_trigger.sh
 
   build:
     parameters:
@@ -84,37 +83,36 @@ workflows:
 
   # The main workflow responsible for triggering all other workflows
   # in which changes are detected.
-  ci:
-    when: << pipeline.parameters.trigger >>
-    jobs:
-      - trigger-workflows
+  # ci:
+  #   when: << pipeline.parameters.trigger >>
+  #   jobs:
+  #     - trigger-workflows
 
-  api-gateway-service:
-    when: << pipeline.parameters.api-gateway-service >>
-    jobs:
-      - build:
-          name: api-gateway-service-build
-          package_name: api-gateway-service
-      - deploy:
-          name: api-gateway-service-deploy
-          package_name: api-gateway-service
-          requires:
-            - api-gateway-service-build
+  # api-gateway-service:
+  #   when: << pipeline.parameters.api-gateway-service >>
+  #   jobs:
+  #     - build:
+  #         name: api-gateway-service-build
+  #         package_name: api-gateway-service
+  #     - deploy:
+  #         name: api-gateway-service-deploy
+  #         package_name: api-gateway-service
+  #         requires:
+  #           - api-gateway-service-build
 
-  auth-service:
-    when: << pipeline.parameters.auth-service >>
-    jobs:
-      - build:
-          name: auth-service-build
-          package_name: auth-service
-      - deploy:
-          name: auth-service-deploy
-          package_name: auth-service
-          requires:
-            - auth-service-build
+  # auth-service:
+  #   when: << pipeline.parameters.auth-service >>
+  #   jobs:
+  #     - build:
+  #         name: auth-service-build
+  #         package_name: auth-service
+  #     - deploy:
+  #         name: auth-service-deploy
+  #         package_name: auth-service
+  #         requires:
+  #           - auth-service-build
 
   server-utils:
-    when: << pipeline.parameters.server-utils >>
     jobs:
       - build:
           name: server-utils-build
@@ -125,20 +123,19 @@ workflows:
           requires:
             - server-utils-build
 
-  components:
-    when: << pipeline.parameters.components >>
-    jobs:
-      - build:
-          name: components-build
-          package_name: components
-      - deploy:
-          name: components-deploy
-          package_name: components
-          requires:
-            - components-build
+  # components:
+  #   when: << pipeline.parameters.components >>
+  #   jobs:
+  #     - build:
+  #         name: components-build
+  #         package_name: components
+  #     - deploy:
+  #         name: components-deploy
+  #         package_name: components
+  #         requires:
+  #           - components-build
 
   ui:
-    when: << pipeline.parameters.ui >>
     jobs:
       - build:
           name: ui-build
