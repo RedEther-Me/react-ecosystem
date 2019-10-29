@@ -62,9 +62,7 @@ COUNT=0
 for PACKAGE in ${PACKAGES[@]}
 do
   PACKAGE_PATH=${ROOT#.}/$PACKAGE
-  # LATEST_COMMIT_SINCE_LAST_BUILD=$(git log -1 $CIRCLE_SHA1 ^$LAST_COMPLETED_BUILD_SHA --format=format:%H --full-diff ${PACKAGE_PATH#/})
   LATEST_COMMIT_SINCE_LAST_BUILD=$(git diff HEAD..origin/master --name-only -- ${PACKAGE_PATH#/})
-  echo $LATEST_COMMIT_SINCE_LAST_BUILD
 
   if [[ -z "$LATEST_COMMIT_SINCE_LAST_BUILD" ]]; then
     echo -e "\e[90m  [-] $PACKAGE \e[0m"
@@ -81,3 +79,24 @@ if [[ $COUNT -eq 0 ]]; then
 fi
 
 echo "Changes detected in ${COUNT} package(s)."
+
+############################################
+## 3. CicleCI REST API call
+############################################
+DATA="{ \"branch\": \"$CIRCLE_BRANCH\", \"parameters\": { $PARAMETERS } }"
+echo "Triggering pipeline with data:"
+echo -e "  $DATA"
+
+URL="${CIRCLE_API}/v2/project/${REPOSITORY_TYPE}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pipeline"
+HTTP_RESPONSE=$(curl -s -u ${CIRCLE_TOKEN}: -o response.txt -w "%{http_code}" -X POST --header "Content-Type: application/json" -d "$DATA" $URL)
+
+if [ $HTTP_RESPONSE != "202" ]; then
+    echo -e "\e[93mReceived status code: ${HTTP_RESPONSE}\e[0m"
+    echo "Response:"
+    cat response.txt
+    exit 1
+else
+    echo "API call succeeded."
+    echo "Response:"
+    cat response.txt
+fi
