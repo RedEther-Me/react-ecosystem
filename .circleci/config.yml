@@ -70,8 +70,8 @@ workflows:
       - build:
           name: api-gateway-service-build
           package_name: api-gateway-service
-      - deploy:
-          name: api-gateway-service-deploy
-          package_name: api-gateway-service
-          requires:
-            - api-gateway-service-build
+      # - deploy:
+      #     name: api-gateway-service-deploy
+      #     package_name: api-gateway-service
+      #     requires:
+      #       - api-gateway-service-build
