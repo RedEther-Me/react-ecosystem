@@ -11,7 +11,7 @@ import {
 function GlobalNavigation() {
   return (
     <Navbar hasBottomMargin>
-      <NavBrand>Test</NavBrand>
+      <NavBrand>Update</NavBrand>
     </Navbar>
   );
 }
