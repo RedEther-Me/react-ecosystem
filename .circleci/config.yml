@@ -27,9 +27,7 @@ jobs:
     executor: node
     steps:
       - checkout
-      - run:
-        name: Trigger Workflows
-        command: chmod + x ./circle_trigger.sh && ./circle_trigger.sh
+      - run: chmod + x ./circle_trigger.sh && ./circle_trigger.sh
 
   build:
     parameters:
