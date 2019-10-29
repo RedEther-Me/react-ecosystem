@@ -54,6 +54,25 @@ jobs:
           paths:
             - packages/<< parameters.package_name >>
 
+  deploy:
+    parameters:
+      package_name:
+        type: string
+
+    executor: node
+    working_directory: ~/project/packages/<< parameters.package_name >>
+
+    steps:
+      - attach_workspace:
+          at: ~/project
+      # This step is added to show that files are available from the build job.
+      - run:
+          name: Content to deploy
+          command: ls && cat build.txt
+      - deploy:
+          name: Deploy
+          command: echo "Deploying << parameters.package_name >> ..."
+
 workflows:
   version: 2
 
@@ -70,8 +89,32 @@ workflows:
       - build:
           name: api-gateway-service-build
           package_name: api-gateway-service
-      # - deploy:
-      #     name: api-gateway-service-deploy
-      #     package_name: api-gateway-service
-      #     requires:
-      #       - api-gateway-service-build
+      - deploy:
+          name: api-gateway-service-deploy
+          package_name: api-gateway-service
+          requires:
+            - api-gateway-service-build
+
+  auth-service:
+    when: << pipeline.parameters.auth-service >>
+    jobs:
+      - build:
+          name: auth-service-build
+          package_name: auth-service
+      - deploy:
+          name: auth-service-deploy
+          package_name: auth-service
+          requires:
+            - auth-service-build
+
+  ui:
+    when: << pipeline.parameters.ui >>
+    jobs:
+      - build:
+          name: ui-build
+          package_name: ui
+      - deploy:
+          name: ui-deploy
+          package_name: ui
+          requires:
+            - ui-build
